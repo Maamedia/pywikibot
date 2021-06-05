@@ -56,7 +56,8 @@ extra_deps = {
     'Graphviz': ['pydot>=1.2'],
     'Google': ['google>=1.7'],
     'mwparserfromhell': ['mwparserfromhell>=0.5.0'],
-    'wikitextparser': ['wikitextparser>=0.47.0'],
+    'wikitextparser': ['wikitextparser>=0.47.5;python_version<"3.6"',
+                       'wikitextparser>=0.47.0'],
     'Tkinter': [  # vulnerability found in Pillow<8.1.1
         'Pillow>=8.1.1;python_version>="3.6"',
     ],
@@ -102,8 +103,8 @@ dependencies = [
     'requests>=2.20.1,<2.26.0;python_version<"3.6"',
     'requests>=2.20.1;python_version>="3.6"',
     # PEP 440
-    'setuptools>=20.2, !=50.0.0, <50.2.0 ; python_version < "3.6"',
-    'setuptools>=20.2 ; python_version >= "3.6"',
+    'setuptools>=49.4.0, !=50.0.0, <50.2.0 ; python_version < "3.6"',
+    'setuptools>=49.4.0 ; python_version >= "3.6"',
 ]
 # in addition either mwparserfromhell or wikitextparser is required
 
@@ -139,8 +140,8 @@ def get_validated_version():  # pragma: no cover
     In that case the version number is validated: Read tags from git.
     Verify that the new release is higher than the last repository tag
     and is not a developmental release.
-    @return: pywikibot module version string
-    @rtype: str
+    :return: pywikibot module version string
+    :rtype: str
     """
     version = metadata.__version__
     if 'sdist' not in sys.argv:
